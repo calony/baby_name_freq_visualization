@@ -3,13 +3,18 @@ import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
 import plotly.express as px
+import zipfile
+import os
 
 # Load your data
-data = pd.read_csv('name_data.csv', header=0)
+with zipfile.ZipFile('name_data.csv.zip', 'r') as zip_file:
+    with zip_file.open('name_data.csv') as csv_file:
+        data = pd.read_csv(csv_file, header=0)
 
 # Initialize the Dash app
 app = dash.Dash(__name__)
-server = app.server
+
+server=app.server # used for deployment on render.com
 
 # Define the layout of your app
 app.layout = html.Div([
