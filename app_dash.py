@@ -19,7 +19,7 @@ app.layout = html.Div([
     dcc.Input(
         id='name-input',
         type='text',
-        value='andre',
+        value='',
         placeholder='Enter a name...',
         debounce=True
     ),
